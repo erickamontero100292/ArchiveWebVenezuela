@@ -1,0 +1,73 @@
+/* algunos ejemplos con CSS */
+header, footer, div, h1, h2, ul,li,a{ 
+	margin:0; padding:0;
+	color:#000;
+
+}
+header {
+	background-color:#262c26;
+	color:#ffffff;
+}
+nav ul li a{
+	text-decoration:none;
+	color:#fff;
+	margin:12px;
+}
+
+#inicio ul#menu li.inicio,
+#sobre ul#menu li.sobre,
+#contacto ul#menu li.contacto,
+#registro ul#menu li.registro,
+#ayuda ul#menu li.ayuda,
+#fallido ul#menu li.fallido,
+#crear ul#menu li.crear,
+#usuario ul#menu li.usuario,
+#consultar ul#menu li.consultar
+{
+	background-color:#000000;
+             color: white
+             text-align: center;   
+             font-weight: white ;
+ font-size: 100%;
+
+}
+
+.activo { 
+  font-weight: bold; 
+
+}
+.impar { 
+	background-color:#262c26;
+}
+.par { 
+	background-color:#262c26;
+}
+.error {
+    color: #449d44;
+    font-weight: normal;
+    font-size: 140%;
+}
+.errorlist{
+  color: red;
+  font-weight: Normal; 
+}
+
+label.error{
+  margin-top: 5px;
+}
+
+.success {
+    color: #449d44;
+    font-weight: normal;
+    font-size: 140%;
+}
+.info {
+    color: #A9D0F5;
+    font-weight: normal;
+    font-size: 140%;
+}
+ul.messagelist li.error {
+
+background-color: #f2e6e6;
+
+}

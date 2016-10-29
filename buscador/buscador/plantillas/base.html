@@ -1,0 +1,132 @@
+
+<!DOCTYPE html>
+<meta charset='utf-8'>
+
+<html lang='es'>
+<head>
+  <title>Archivo Web Venezuela - {% block titulo %}{% endblock %}</title>
+
+<script type="text/javascript" src="{{STATIC_URL}}jquery/jquery-latest.min.js"></script>
+<script type="text/javascript" src="{{STATIC_URL}}jquery/jquery.min.js"></script>
+<script type="text/javascript" src="{{STATIC_URL}}jquery/bootstrap.js"></script>
+<link type="text/css" rel="stylesheet" href="{{STATIC_URL}}bootstrap-3.3.4-dist/css/bootstrap.css">
+<link href="bootstrap-switch.css" rel="stylesheet">
+<script src="{{STATIC_URL}}jquery.js"></script>
+<script src="{{STATIC_URL}}bootstrap-switch.js"></script>
+<style type="text/css">
+    .bs-example{
+        margin: 20px;
+    }
+</style>
+
+  <link rel='stylesheet' href='{{STATIC_URL}}css/base.css'>
+  <link rel='shortcut icon' href='{{STATIC_URL}}img/awvsolo.png'>
+
+  <script src='{{STATIC_URL}}js/jquery-1.7.2.min.js'></script>
+  <script src='{{STATIC_URL}}js/demo.js'></script>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href='{{STATIC_URL}}bootstrap-3.3.4-dist/css/datepicker.css'>
+      <link rel="stylesheet" href='{{STATIC_URL}}bootstrap-3.3.4-dist/css/bootstrap.css'>
+    <!--<link rel="stylesheet" href="bootstrap-3.3.4-dist/css/bootstrap.min.css">
+    <script src="bootstrap-3.3.4-dist/js/bootstrap.min.js"></script>-->
+    <link href='{{ STATIC_URL }}css/datepicker/datepicker.css' rel="stylesheet" type="text/css" />
+
+
+<script src="{{STATIC_URL}}jquery/jquery-1.9.1.min.js"></script>
+<script src="{{STATIC_URL}}jquery/bootstrap-datepicker.js"></script>
+
+<!--<link rel="stylesheet" href="bootstrap-3.3.4-dist/css/bootstrap.min.css">
+<script src="bootstrap-3.3.4-dist/js/bootstrap.min.js"></script>-->
+
+</head>
+
+
+<body>
+<div id="wrap">
+<div id="main">
+<nav class="navbar navbar-inverse" role="navigation" >
+      <div class="navbar-header" width="350px>
+       
+        <a class="navbar-brand" href="#"><img src="{{ STATIC_URL }}img/awv_b3.png " width="250px" ></a>
+    </div>
+    
+</nav>  
+
+
+<!-- ################################################ FIN MODAL ############################################## -->
+ <!-- BEGIN MENSAJES -->
+      {% if messages %}
+<ul class="messages">
+   
+    {% for message in messages %}
+    <div class="alert {{ message.tags }} {% if message.tags %} {% endif %}">
+        {# close-href is used because href is used by bootstrap to closing other divs #}
+        {% if message.level == DEFAULT_MESSAGE_LEVELS.ERROR %}
+        {% endif %}
+        <a class="close" data-dismiss="alert"{% if message.pk %} close-href="{% url message_mark_read message.pk %}"{% endif %}>×</a>
+        {{ message }}
+    </div>
+{% endfor %}
+
+
+ 
+</ul>
+{% endif %}
+        <!-- END MENSAJES -->  
+  <section class='contenido'>
+	{% block contenido %}{% endblock %}
+  </section>
+  </div>
+    </div>
+    
+    <div id="footer">
+         
+      <img id="profile-img1" width="140px" height="65px" src="{{STATIC_URL}}img/Logos.png"/>
+        <p style="color:white">Archivo Web Venezuela &copy;2015</p> 
+         
+      
+    </div>
+    
+
+
+<style type="text/css">
+  /* Sticky Footer Solution by Steve Hatcher
+http://stever.ca
+http://www.cssstickyfooter.com*/
+* {
+margin: 0;
+padding: 0;
+}/*Quitamos unas propiedades que por defecto traen los navegadores y las ponemos en “0”*/
+html, body {
+height: 100%;
+}
+#wrap {
+min-height: 100%;
+}
+#main {
+overflow: auto;
+padding-bottom: 55px;
+
+}/* Altura en px del footer */
+#footer {
+position: relative;
+margin-top: -45px; /* altura en px del footer con valor negativo */
+height: 88px; /* Altura del Footer en px*/
+clear: both;
+background: #282828;
+text-align: center;
+}
+
+/*Opera Fix*/
+body:before {
+content: "";
+height: 100%;
+float: left;
+width: 0;
+margin-top: -32767px;/* Efecto Negativo para OPERA*/
+}
+</style>
+  
+</body>
+
+</html>

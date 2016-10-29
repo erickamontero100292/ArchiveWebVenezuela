@@ -1,0 +1,111 @@
+{% extends 'base.html' %}
+{% block titulo %}{% if query %} Resultado Consulta{% endif %}{% endblock %}
+
+
+{% block contenido %}
+<body id="consultar">
+ <center><div class="container-fluid">
+   <form id="signin" class="navbar-form " role="form">
+          <div class="input-group">
+                <div class="input-group-btn search-panel">
+                    <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+                      <span id="search_concept">Filtrar por </span> <span class="caret"></span>
+                    </button>
+                    <ul class="dropdown-menu" role="menu">
+                      <li><a href="/">Contenidos</a></li>
+			<li><a href="/url/">URL</a></li>
+                    </ul>
+                </div>
+                <input type="text" class="form-control"  name="q" value="{{ query|escape }}" placeholder="Buscar ...">
+          </div>
+                        <button type="submit" class="btn btn-primary">Buscar <span class="glyphicon glyphicon-search"></span></button>
+                   </form>
+     
+    </div></center>
+
+<!-- ################################################### TABLA ########################################### --> 
+
+<div class="container">
+
+   {% if palabraClaves %} <h2>Resultados de la B&uacute;squeda</h2>  
+  <br>
+    <div class="panel panel-default">
+  <!-- Default panel contents -->
+<div class="panel-heading">
+<div class="pagination">
+    <span class="step-links">
+        {% if palabraClaves.has_previous %}
+            <a href="?res={{res}}&&page={{ palabraClaves.previous_page_number }}">Anterior</a>
+        {% endif %}
+
+        <span class="current">
+            Paginas {{ palabraClaves.number }} of {{ palabraClaves.paginator.num_pages }}.
+        </span>
+
+        {% if palabraClaves.has_next %}
+            <a href="?res={{res}}&&page={{ palabraClaves.next_page_number }}">Siguiente</a>
+        {% endif %}
+    </span>
+</div>
+
+
+</div> 
+
+  <table class="table table-bordered " style="table-layout: fixed">
+     {% if palabraClaves %}
+    <thead>
+      <tr>
+       
+        <th width="200" style="Word-wrap: break-word; overflow-wrap: break-word">URL</th>
+        <th style="Word-wrap: break-word; overflow-wrap: break-word">WARC</th>
+        <th style="Word-wrap: break-word; overflow-wrap: break-word">Versi&oacute;n</th>
+        
+      </tr>
+    </thead>
+    {% endif %}
+    <tbody>
+{% endif %}
+    {% if palabraClaves%} 
+    
+    {% for dato in palabraClaves %}
+      <tr>
+        
+        <td width="200" style="Word-wrap: break-word; overflow-wrap: break-word">{{dato.URL|capfirst}}</td>
+       
+        <td style="Word-wrap: break-word; overflow-wrap: break-word">{{dato.nameWarc|capfirst}}</td>
+        <td style="Word-wrap: break-word; overflow-wrap: break-word">{{dato.version|capfirst}}</td>
+       
+      	 
+    
+        
+      </tr>
+    {% endfor %}
+	
+ 
+    
+    {%else %}
+
+		{% ifequal res '0'%} 
+                        <tr>
+                            <td colspan="100%" class="warning"> 
+                              <b>
+                                No se han encontrado resultados para tu b&uacute;squeda
+                              </b>
+                            </td>
+                          </tr>
+		{% endifequal %}
+</tbody>
+    {% endif %}  
+ 
+    
+  </table>
+
+   
+
+  </div>
+  
+
+<!-- ################################################### TABLA ########################################### --> 
+
+
+{% endblock %}
